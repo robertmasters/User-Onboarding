@@ -8,11 +8,7 @@ import axios from 'axios'
 import * as yup from 'yup'
 
 
-
-
-
 const initialFormValues = {
-  //text inputs
   username: '',
   email: '',
   password: '',
@@ -29,7 +25,6 @@ const initialUser = []
 const initialDisabled = true
 
 function App() {
-  //const [users, setUsers] = useState(Array.from(initialUser)) 
     const [users, setUsers] = useState(initialUser)          // array of user objects
     const [formValues, setFormValues] = useState(initialFormValues) // object for values state
     const [formErrors, setFormErrors] = useState(initialFormErrors) // object for errors
@@ -40,7 +35,6 @@ function App() {
     const postNewUser = newUser => {
       axios.post('https://reqres.in/api/users', newUser)
         .then(good => {
-          // setUsers(users.concat(good.data)) //given that .data is an object I tried to use the concat function to make it an array to map over, but this causes a TypeError: users.concat is not a function
          setUsers([...users, good.data]) //adding newUser to state
         })
         .catch(err => {
@@ -95,9 +89,8 @@ function App() {
         password: formValues.password,
         terms: formValues.terms
       }
-
-      // making a new user
-      postNewUser(newUser)
+ 
+      postNewUser(newUser) // making a new user
     }
   
     useEffect(() => {
