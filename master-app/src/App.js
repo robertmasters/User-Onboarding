@@ -46,7 +46,7 @@ function App() {
         })
     }
   
-//form actions
+    //form actions
     const inputChange = (name, value) => {
       //  validation with yup
       yup
@@ -56,9 +56,7 @@ function App() {
         // if the validation is successful, error message is cleared
         .then(valid => {
           setFormErrors({
-            ...formErrors,
-            [name]: "",
-          })
+            ...formErrors, [name]: "", })
         })
         // if the validation is unsuccessful, return error message set up in formSchema
         .catch(err => {
@@ -69,22 +67,17 @@ function App() {
         })
   
       setFormValues({
-        ...formValues,
-        [name]: value
-      })
+        ...formValues, [name]: value })
     }
 
     const checkboxChange = (name, isChecked) => {
       //new state for the whole form
-      setFormValues({
-        ...formValues,
-          [name]: isChecked
-      })
+      setFormValues({ ...formValues, [name]: isChecked })
     }
   
     const submit = () => {
       const newUser = {
-        username: formValues.username.trim(),
+        username: formValues.username.trim(), //trim removes whitespace from both ends of the inputed string
         email: formValues.email.trim(),
         password: formValues.password,
         terms: formValues.terms
@@ -112,14 +105,14 @@ function App() {
             inputChange={inputChange}
             checkboxChange={checkboxChange}
             submit={submit}
-            disabled={disabled}
+            disabled={disabled} 
             errors={formErrors}
           />
           </div>
           <div className = "userCard-Container">
           {
             
-              <User details= {users} />
+              <User details= {users} /> 
             
           }
           </div>
